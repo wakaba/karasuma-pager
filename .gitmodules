@@ -1,0 +1,9 @@
+[submodule "modules/karasuma-url"]
+	path = modules/karasuma-url
+	url = git://github.com/wakaba/perl-karasuma-url
+[submodule "modules/ooutils"]
+	path = modules/ooutils
+	url = git://github.com/wakaba/perl-ooutils
+[submodule "modules/web-utils"]
+	path = modules/web-utils
+	url = git://github.com/wakaba/perl-web-utils.git
