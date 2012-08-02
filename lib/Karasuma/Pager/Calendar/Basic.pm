@@ -283,12 +283,16 @@ sub get_absolute_week_type_by_day {
 
 # ------ URLs ------
 
+sub url_class {
+    return 'Karasuma::URL';
+}
+
 sub unpaged_url {
     my $self = shift;
     if (@_) {
         $self->{unpaged_url} = shift;
     }
-    return $self->{unpaged_url} || Karasuma::URL->new;
+    return $self->{unpaged_url} || $self->url_class->new;
 }
 
 sub get_url_with_date_and_level {
