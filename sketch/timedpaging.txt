@@ -1,0 +1,40 @@
+# $all_entries->first/last というとき、実際には $all_entires ではなく
+# $entries の最初と最後を使う。ただし $entries の最初 (最後) のエントリーより
+# 前 (後) がフィルタリングによって省略されるエントリーのみであるなら、
+# その最初 (最後) のエントリーを使う。
+
+1ページ目
+$all_entries = SELECT * FROM timeline ORDER BY created_on DESC LIMIT $n + α;
+$entries = $all_entries->grep(NG filter);
+$entries = $entries->slice(0, $n);
+# 次ページは、本ページの最後のエントリーと同じ時刻で1つ次のエントリー (あれば) 以降である
+$next_start_time = $entries->last->created_on;
+$next_start_offset = $all_entries->grep($_->created_on == $next_start_time)->length + 1;
+# 前ページは、本ページの最初のエントリーと同じ時刻で1つ前のエントリー (あれば) 以前である
+$prev_start_time = $entries->first->created_on;
+$prev_start_offset = $all_entries->grep($_->created_on == $next_start_time)->length + 1;
+
+より古いページ ($start_time, $start_offset が指定される)
+$all_entries = SELECT * FROM timeline
+    WHERE created_on <= $start_time
+    ORDER BY created_on DESC LIMIT $start_offset, $n + α;
+# $start_time と最後のエントリーの時刻が等しければ、次ページの最初も同じ時刻の可能性がある
+if ($start_time == $all_entries->last->created_on) {
+  $next_start_offset = $start_offset + $all_entries->length;
+}
+# $start_time == $all_entries->first->created_on だと、 $prev_start_offset は正しくない値になるかも
+
+より新しいページ ($start_time, $start_offset が指定される)
+$all_entries = SELECT * FROM timeline
+    WHERE created_on >= $start_time
+    ORDER BY created_on ASC LIMIT $start_offset, $n + α;
+# $start_time と最初のエントリーの時刻が等しければ、前ページの最後も同じ時刻の可能性がある
+if ($start_time == $all_entries->first->created_on) {
+  $prev_start_offset = $start_offset + $all_entries->length;
+}
+# $start_time == $all_entries->last->created_on だと、 $next_start_offset は正しくない値になるかも
+
+より新しいイベント ($start_time, $start_offset が指定される)
+$all_entries = SELECT * FROM event
+    WHERE created_on >= $start_time
+    ORDER BY created_on ASC LIMIT $start_offset, $n + α;
