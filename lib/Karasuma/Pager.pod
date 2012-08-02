@@ -26,6 +26,11 @@ A pager for MoCo query object with paging timestamp.
 
 A calendar pager for MoCo query object.
 
+=item L<Karasuma::Pager::Role::HasQueryTimedPager>
+
+A base class for application context object which provides items by
+timed and query-offset pagers.
+
 =back
 
 =head1 SEE ALSO
@@ -44,7 +49,7 @@ Many of these modules are developed as part of Ugomemo Hatena, Pocket
 Hatena 2010 renewal, Hatena Haiku2, Hatena Coco, Hatena Haiku 2010,
 HatenaOne, and/or manakai projects and following people contributed to
 modules: birdie7, cho45, chris4403, hakobe932, hitode909, mechairoi,
-motemen, onishi, and Wakaba.
+motemen, onishi, shiba_yu36, and Wakaba.
 
 =head1 LICENSE
 

@@ -1,5 +1,6 @@
 Calendar::Simple
 Carp
+Class::Data::Inheritable
 DateTime
 DateTime::Format::MySQL
 DateTime::TimeZone
@@ -7,6 +8,7 @@ Exporter::Lite
 List::Rubyish
 Path::Class
 POSIX
+Scalar::Util
 SQL::Abstract
 Time::Local
 URI
