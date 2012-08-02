@@ -1,0 +1,56 @@
+=head1 NAME
+
+Karasuma::Pager - Hatena Pager Collection
+
+=head1 MODULES
+
+=over 4
+
+=item L<Karasuma::Pager::Simple::URI>
+
+A simple pager with given list of full items.
+
+=item L<Karasuma::Pager::QueryOffset::MoCo>
+
+A pager for MoCo query object with page number.
+
+=item L<Karasuma::Pager::QueryOffset::Dongry>
+
+A pager for Dongry query object with page number.
+
+=item L<Karasuma::Pager::Timed::HasMoCoQuery>
+
+A pager for MoCo query object with paging timestamp.
+
+=item L<Karasuma::Pager::Calendar::HasMoCoQuery>
+
+A calendar pager for MoCo query object.
+
+=back
+
+=head1 SEE ALSO
+
+Pager implementation maniacs
+<http://hakobe932.hatenablog.com/entry/20101017/1287280409> (In
+Japanese).
+
+=head1 AUTHOR
+
+Wakaba <wakabatan@hatena.ne.jp>.
+
+=head1 ACKNOWLEDGEMENTS
+
+Many of these modules are developed as part of Ugomemo Hatena, Pocket
+Hatena 2010 renewal, Hatena Haiku2, Hatena Coco, Hatena Haiku 2010,
+HatenaOne, and/or manakai projects and following people contributed to
+modules: birdie7, cho45, chris4403, hakobe932, hitode909, mechairoi,
+motemen, onishi, and Wakaba.
+
+=head1 LICENSE
+
+Copyright 2008-2012 Hatena <http://www.hatena.ne.jp/>.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
