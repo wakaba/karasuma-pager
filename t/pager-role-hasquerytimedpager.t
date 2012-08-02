@@ -417,7 +417,7 @@ sub _use_calendar_filter_date_level_default : Test(7) {
     isa_ok $cal, 'Karasuma::Pager::Calendar::HasMoCoQuery';
     is_datetime $cal->date_as_datetime, DateTime->today;
     is $cal->date_level, 'year';
-    is $app->filtered_unpaged_url->as_absurl, q</test?date=2011>;
+    is $app->filtered_unpaged_url->as_absurl, q</test?date=> . DateTime->today->year;
     my $q2 = $app->query;
     isa_ok $q2, 'DBIx::MoCo::Query';
     isnt $q2, $q;
